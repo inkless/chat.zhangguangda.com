@@ -221,7 +221,7 @@ var connect = function() {
         if(data.type == 'global' || data.type == 'pm' || data.type == 'mention') {
             if(!focus) {
                 unread++;
-                document.title = '(' + unread + ') Node.JS Chat';
+                document.title = '(' + unread + ') Chatroom';
 
                 if(settings.sound) {
                     blop.play();
@@ -748,7 +748,7 @@ if(typeof(Storage) !== 'undefined') {
 }
 
 window.onfocus = function() {
-    document.title = 'Node.JS Chat';
+    document.title = 'Chatroom';
     focus = true;
     unread = 0;
 };
