@@ -347,7 +347,7 @@ function handleInput() {
             var command = value.substring(1).split(' ');
 
             switch(command[0].toLowerCase()) {
-                case 'pm': case 'msg': case 'role': case 'kick': case 'ban': case 'name': case 'alert': case 'me': case 'em':
+                case 'pm': case 'msg': case 'role': case 'kick': case 'admin': case 'ban': case 'name': case 'alert': case 'me': case 'em':
                     if(value.substring(command[0].length).length > 1) {
                         if((command[0] == 'pm' || command[0] == 'msg') && value.substring(command[0].concat(command[1]).length).length > 2) {
                             sendSocket(value.substring(command[0].concat(command[1]).length + 2), 'pm', command[1], 'PM');
@@ -369,6 +369,10 @@ function handleInput() {
                             sendSocket(command[1], 'role', value.substring(command[0].concat(command[1]).length + 3));
                         } else if(command[0] == 'role') {
                             showChat('light', 'Error', 'Use /' + command[0] + ' [user] [0-3]');
+                        }
+
+                        if(command[0] == 'admin') {
+                            sendSocket(value.substring(command[0].length + 2), command[0]);
                         }
 
                         if(command[0] == 'kick' || command[0] == 'me' || command[0] == 'em') {
